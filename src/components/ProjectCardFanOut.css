@@ -1,34 +1,19 @@
-/* PURE VISUAL CARD FAN-OUT WITH INTEGRATED TYPEWRITER HEADER */
-.card-fanout-pin-wrapper {
+/* SEAMLESS INFINITE LOOPING PROJECT CAROUSEL */
+.project-carousel-section {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  padding: clamp(60px, 10vh, 100px) 0 clamp(80px, 12vh, 120px) 0;
   background-color: transparent;
   user-select: none;
-}
-
-.card-fanout-stage {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  max-width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: clamp(65px, 11vh, 110px);
-  padding-left: 24px;
-  padding-right: 24px;
-  box-sizing: border-box;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* 1. Centered Typewriter Headline with comfortable, clean breathing space */
-.fanout-typewriter-header {
+/* 1. Centered Typewriter Headline */
+.carousel-typewriter-header {
   text-align: center;
-  margin-bottom: clamp(48px, 7.5vh, 75px);
-  z-index: 20;
+  margin-bottom: clamp(40px, 6vh, 60px);
+  padding: 0 24px;
 }
 
 .typewriter-heading {
@@ -64,79 +49,110 @@
   }
 }
 
-/* 2. The Card Deck & Carousel Track Area */
-.card-fanout-deck-area {
+/* 2. Track Container spanning full viewport width */
+.carousel-track-container {
   position: relative;
   width: 100%;
-  flex: 1;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 10px;
-  overflow: visible;
+  overflow: hidden;
+  padding: 24px 0 32px 0;
 }
 
-/* Center Pivot & Carousel Track */
-.card-fanout-deck {
-  position: relative;
-  width: 0;
-  height: 0;
+/* Subtle luxury edge fade masks on sides */
+.carousel-fade-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(40px, 6vw, 100px);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.carousel-fade-edge.left {
+  left: 0;
+  background: linear-gradient(to right, #EDEDEF 15%, rgba(237, 237, 239, 0));
+}
+
+.carousel-fade-edge.right {
+  right: 0;
+  background: linear-gradient(to left, #EDEDEF 15%, rgba(237, 237, 239, 0));
+}
+
+/* Moving Track */
+.carousel-track {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  width: max-content;
   will-change: transform;
 }
 
-/* Pure Visual Card - Full-Bleed Image, Clean Border & Shadow */
-.pure-visual-card {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: clamp(165px, 15vw, 215px);
-  height: clamp(245px, 22vw, 315px);
-  margin-left: calc(-1 * clamp(165px, 15vw, 215px) / 2);
-  margin-top: 0;
+/* Individual Card Item - Tight Spacing */
+.carousel-card-item {
+  flex-shrink: 0;
+  width: clamp(190px, 17vw, 240px);
+  height: clamp(270px, 24vw, 340px);
+  margin-right: clamp(12px, 1.4vw, 18px); /* Tight space in between */
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.carousel-card-item:hover {
+  transform: translateY(-10px) scale(1.04);
+}
+
+/* Card Visual Frame */
+.carousel-card-inner {
+  width: 100%;
+  height: 100%;
   border-radius: 20px;
   overflow: hidden;
   background-color: #0d0d10;
   border: 2px solid rgba(255, 255, 255, 0.75);
-  box-shadow: 0 18px 45px rgba(9, 9, 11, 0.2);
-  cursor: pointer;
-  transform-origin: center center;
-  will-change: transform, box-shadow, opacity;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 16px 40px rgba(9, 9, 11, 0.18);
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.pure-visual-card:hover {
-  box-shadow: 0 32px 70px rgba(9, 9, 11, 0.35);
+.carousel-card-item:hover .carousel-card-inner {
   border-color: #ffffff;
+  box-shadow: 0 30px 65px rgba(9, 9, 11, 0.32);
 }
 
-/* Full-Bleed Image */
-.pure-card-image {
+/* Full Bleed Image */
+.carousel-card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   pointer-events: none;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.carousel-card-item:hover .carousel-card-img {
+  transform: scale(1.06);
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  .card-fanout-stage {
-    padding-top: 45px;
+  .project-carousel-section {
+    padding: 45px 0 60px 0;
   }
-  .fanout-typewriter-header {
-    margin-bottom: 30px;
+
+  .carousel-typewriter-header {
+    margin-bottom: 25px;
   }
+
   .typewriter-heading {
     font-size: clamp(22px, 6.2vw, 32px);
   }
-  .pure-visual-card {
-    width: 135px;
-    height: 200px;
-    margin-left: -67px;
-    margin-top: 0;
+
+  .carousel-card-item {
+    width: 155px;
+    height: 225px;
+    margin-right: 12px; /* Very tight spacing for mobile */
+  }
+
+  .carousel-card-inner {
     border-radius: 16px;
-    box-shadow: 0 12px 30px rgba(9, 9, 11, 0.22);
+    box-shadow: 0 12px 28px rgba(9, 9, 11, 0.2);
   }
 }
