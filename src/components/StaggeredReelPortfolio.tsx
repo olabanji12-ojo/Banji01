@@ -19,7 +19,6 @@ export default function StaggeredReelPortfolio({
   const lastScrollYRef = useRef(0);
   const drumsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  const RADIUS = 55; // Sized for grand, big typography
   const ITEM_COUNT = 4;
   const ANGLE_STEP = 360 / ITEM_COUNT; // 90 deg
 
@@ -96,7 +95,7 @@ export default function StaggeredReelPortfolio({
                         key={itemIndex}
                         className={`reel-facet ${isSolid ? 'facet-solid' : 'facet-outline'}`}
                         style={{
-                          transform: `rotateX(${facetAngle}deg) translateZ(${RADIUS}px)`,
+                          transform: `rotateX(${facetAngle}deg) translateZ(var(--reel-radius, 52px))`,
                         }}
                       >
                         <span className="facet-char">{char}</span>

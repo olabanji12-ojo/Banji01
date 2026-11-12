@@ -1,3 +1,7 @@
+:root {
+  --reel-radius: 52px;
+}
+
 /* Full Single Page Hero - Everything visible, spread out, large & clear */
 .hero-page-wrapper {
   position: relative;
@@ -180,35 +184,117 @@
 }
 
 @media (max-width: 768px) {
+  :root {
+    --reel-radius: 28px;
+  }
+
   .hero-page-wrapper {
-    padding: 32px 16px;
+    padding: 32px 14px;
+    min-height: 100vh;
   }
-  .staggered-portfolio-container {
-    height: 90px;
-    margin-bottom: 18px;
-  }
-  .letter-reel-column {
-    width: clamp(30px, 8.5vw, 48px);
-    height: 70px;
-    margin: 0 1px;
-  }
-  .facet-char {
-    font-size: clamp(42px, 10.5vw, 64px);
-    -webkit-text-stroke: 2px #09090b;
-  }
+
   .intro-lead-text {
+    font-size: 14px;
     letter-spacing: 4px;
+    margin-bottom: 20px;
+  }
+
+  /* 3D Container - Scaled to fit comfortably without overlapping */
+  .staggered-portfolio-container {
+    width: 100%;
+    max-width: 100%;
+    height: 70px;
+    perspective: 600px;
+    margin-bottom: 34px; /* Ample breathing room before Anime Card */
+  }
+
+  .staggered-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .letter-reel-column {
+    width: clamp(28px, 8.8vw, 38px);
+    height: 56px;
+    margin: 0 clamp(0.5px, 0.4vw, 2px);
+  }
+
+  .facet-char {
+    font-size: clamp(30px, 8.2vw, 40px);
+    line-height: 1;
+  }
+
+  .facet-outline .facet-char {
+    -webkit-text-stroke: 1.8px #09090b;
+  }
+
+  .anime-avatar-wrapper {
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+
+  .anime-avatar-frame {
+    width: clamp(160px, 46vw, 220px);
+    height: clamp(160px, 46vw, 220px);
+    border-radius: 24px;
+    border: 2.5px solid #09090b;
+    box-shadow: 0 16px 36px rgba(9, 9, 11, 0.14);
+  }
+
+  .intro-sub-text {
+    font-size: clamp(15px, 4.2vw, 18px);
+    margin-bottom: 16px;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 440px) {
+  :root {
+    --reel-radius: 23px;
+  }
+
+  .hero-page-wrapper {
+    padding: 24px 8px;
+  }
+
+  .intro-lead-text {
+    font-size: 12.5px;
+    letter-spacing: 3px;
     margin-bottom: 16px;
   }
-  .anime-avatar-frame {
-    width: clamp(180px, 55vw, 240px);
-    height: clamp(180px, 55vw, 240px);
-    border-radius: 24px;
+
+  .staggered-portfolio-container {
+    height: 60px;
+    perspective: 450px;
+    margin-bottom: 30px;
   }
+
+  .letter-reel-column {
+    width: clamp(24px, 9.2vw, 32px);
+    height: 48px;
+    margin: 0 0.5px;
+  }
+
+  .facet-char {
+    font-size: clamp(26px, 8.2vw, 34px);
+  }
+
+  .facet-outline .facet-char {
+    -webkit-text-stroke: 1.5px #09090b;
+  }
+
   .anime-avatar-wrapper {
     margin-bottom: 20px;
   }
+
+  .anime-avatar-frame {
+    width: clamp(150px, 48vw, 180px);
+    height: clamp(150px, 48vw, 180px);
+    border-radius: 20px;
+  }
+
   .intro-sub-text {
-    font-size: clamp(17px, 4.5vw, 21px);
+    font-size: 14.5px;
   }
 }
