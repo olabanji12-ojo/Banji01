@@ -1,0 +1,67 @@
+/* FEATURED PROJECTS TYPEWRITER SECTION */
+.featured-typewriter-section {
+  position: relative;
+  width: 100%;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(60px, 10vh, 120px) 24px;
+  background-color: transparent;
+  text-align: center;
+  user-select: none;
+}
+
+.typewriter-centered-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typewriter-heading {
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  font-size: clamp(32px, 5.2vw, 64px);
+  font-weight: 800;
+  letter-spacing: -1.4px;
+  line-height: 1.2;
+  color: #09090b;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+/* Blinking Cursor */
+.typewriter-cursor {
+  display: inline-block;
+  margin-left: 4px;
+  font-weight: 900;
+  color: #09090b;
+  animation: cursorBlink 0.85s infinite ease-in-out;
+  transform: translateY(-2px);
+}
+
+@keyframes cursorBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-typewriter-section {
+    min-height: 30vh;
+    padding: clamp(40px, 8vh, 80px) 16px;
+  }
+  .typewriter-heading {
+    font-size: clamp(26px, 7vw, 38px);
+    letter-spacing: -1px;
+  }
+}
+
