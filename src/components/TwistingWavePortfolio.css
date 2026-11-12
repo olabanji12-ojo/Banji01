@@ -1,0 +1,80 @@
+.twisting-stage-container {
+  width: 100%;
+  max-width: 620px; /* Matched to the compact proportions of the video card */
+  height: 180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  user-select: none;
+}
+
+.twisting-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+}
+
+/* Common Strand Properties */
+.text-strand {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  width: 100%;
+}
+
+.strand-solid {
+  z-index: 5;
+}
+
+.strand-outline {
+  z-index: 4;
+}
+
+/* Individual Letters in the Wave - Tight Kerning, No Squashing */
+.wave-letter {
+  display: inline-block;
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  font-size: clamp(48px, 6vw, 76px); /* Proportional to the card in the reference video */
+  font-weight: 900;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  line-height: 1;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transform-origin: center center;
+  margin: 0 -0.5px;
+}
+
+/* Solid Black Letters (Always 100% visible, bold and crisp) */
+.letter-solid {
+  color: #09090b;
+  opacity: 1 !important;
+}
+
+/* Hollow Outline Letters (Tightly glued underneath like a bent rim) */
+.letter-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.8px #09090b;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .twisting-stage-container {
+    max-width: 380px;
+    height: 120px;
+  }
+  .wave-letter {
+    font-size: clamp(32px, 8vw, 44px);
+    letter-spacing: -1.5px;
+  }
+}

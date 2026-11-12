@@ -1,0 +1,79 @@
+.rolling-portfolio-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 3D Cylinder Viewport */
+.cylinder-viewport {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+}
+
+/* The 3D Drum */
+.cylinder-drum {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+/* Each Text Strip Facet around the Cylinder */
+.cylinder-strip {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  transition: opacity 0.08s ease;
+  pointer-events: none;
+}
+
+.strip-text {
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  font-size: clamp(64px, 12vw, 150px);
+  font-weight: 900;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Center Solid Black Text */
+.strip-solid .strip-text {
+  color: #09090b;
+  -webkit-text-stroke: 0px transparent;
+  font-weight: 900;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Top / Bottom Outline Stems */
+.strip-outline .strip-text {
+  color: transparent;
+  -webkit-text-stroke: 2px #71717a;
+  font-weight: 900;
+}
+
+@media (max-width: 768px) {
+  .cylinder-viewport {
+    height: 240px;
+  }
+  .strip-text {
+    letter-spacing: -1.5px;
+  }
+}
