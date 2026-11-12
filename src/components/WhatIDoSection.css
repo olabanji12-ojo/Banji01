@@ -1,0 +1,77 @@
+/* WHAT I DO SECTION - Centered Word-by-Word Reveal */
+.what-i-do-section {
+  position: relative;
+  width: 100%;
+  min-height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(80px, 14vh, 160px) 24px;
+  background-color: transparent;
+  text-align: center;
+  user-select: none;
+}
+
+.wid-centered-container {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Big, bold headline */
+.wid-word-by-word-headline {
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  font-size: clamp(32px, 5.2vw, 66px);
+  font-weight: 800;
+  letter-spacing: -1.6px;
+  line-height: 1.22;
+  color: #09090b;
+  text-align: center;
+  margin: 0;
+}
+
+/* Each word is wrapped in an overflow-hidden mask for a smooth slide-up reveal */
+.word-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+
+/* The animating word itself */
+.word-inner {
+  display: inline-block;
+  transform: translateY(115%);
+  opacity: 0;
+  filter: blur(6px);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity, filter;
+}
+
+/* Consecutive word reveal when scrolled in view */
+.in-view .word-inner {
+  transform: translateY(0%);
+  opacity: 1;
+  filter: blur(0);
+}
+
+.word-space {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .what-i-do-section {
+    min-height: 45vh;
+    padding: clamp(60px, 10vh, 100px) 18px;
+  }
+  .wid-word-by-word-headline {
+    font-size: clamp(26px, 7vw, 38px);
+    letter-spacing: -1px;
+    line-height: 1.28;
+  }
+}
