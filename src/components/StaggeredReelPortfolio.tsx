@@ -119,9 +119,9 @@ export default function StaggeredReelPortfolio({
           </div>
         </div>
 
-        {/* 4. BOTTOM: I'm Olabanji, nice to have you here. - Cascade Step 4 */}
+        {/* 4. BOTTOM: I'm Olabanji Ojo, nice to have you here. - Cascade Step 4 */}
         <div className="intro-sub-text flow-item step-4">
-          I'm Olabanji, nice to have you here.
+          I'm Olabanji Ojo, nice to have you here.
         </div>
 
       </div>

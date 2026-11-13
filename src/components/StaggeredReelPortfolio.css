@@ -2,7 +2,7 @@
   --reel-radius: 52px;
 }
 
-/* Full Single Page Hero - Everything visible, spread out, large & clear */
+/* Full Single Page Hero - Clean breathing room below fixed navbar */
 .hero-page-wrapper {
   position: relative;
   width: 100%;
@@ -10,7 +10,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 48px 24px;
+  padding: clamp(110px, 16vh, 150px) 24px clamp(48px, 6vh, 70px) 24px;
+  box-sizing: border-box;
 }
 
 /* Wide Container - Spreads naturally across the page */
@@ -69,6 +70,7 @@
   letter-spacing: clamp(6px, 1vw, 12px);
   text-transform: uppercase;
   color: #09090b;
+  margin-top: clamp(8px, 1.5vh, 18px);
   margin-bottom: clamp(36px, 4.5vh, 52px); /* Generous spacing before PORTFOLIO */
 }
 

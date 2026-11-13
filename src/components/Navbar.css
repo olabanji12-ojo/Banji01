@@ -1,0 +1,181 @@
+/* FLOATING BLACK NAVBAR WITH WHITE TEXT */
+.portfolio-navbar-wrapper {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 9999;
+  padding: 0 24px;
+  pointer-events: none;
+  transition: transform 0.35s ease, top 0.35s ease;
+}
+
+.portfolio-navbar {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 1380px; /* Expansive luxury width matching project grid */
+  height: 58px;
+  background-color: #09090b; /* Solid Matte Black */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Clean luxury border */
+  border-radius: 100px; /* Floating Pill Shape */
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px 0 32px;
+  box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.portfolio-navbar-wrapper.is-scrolled .portfolio-navbar {
+  background-color: rgba(9, 9, 11, 0.92);
+  backdrop-filter: blur(16px);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+  height: 52px;
+}
+
+/* Brand on Left */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #ffffff; /* White Text */
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  transition: opacity 0.2s;
+}
+
+.navbar-brand:hover {
+  opacity: 0.85;
+}
+
+/* Pulsing Green Status Dot ("Available for work") */
+.brand-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  box-shadow: 0 0 10px #22c55e;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.4;
+  }
+}
+
+.brand-name {
+  color: #ffffff;
+}
+
+/* Navigation Links Center */
+.navbar-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.75); /* White Text */
+  text-decoration: none;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: color 0.2s, transform 0.2s;
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-link:hover {
+  color: #ffffff; /* Crisp White on hover */
+  transform: translateY(-1px);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1.5px;
+  background-color: #ffffff;
+  transition: width 0.25s ease, left 0.25s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Action Button on Right */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #ffffff; /* White Pill Button */
+  color: #09090b; /* Black Text */
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.navbar-cta-btn:hover {
+  background-color: #ededef;
+  transform: scale(1.04);
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.25);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .portfolio-navbar-wrapper {
+    top: 12px;
+    padding: 0 16px;
+  }
+
+  .portfolio-navbar {
+    height: 50px;
+    padding: 0 16px;
+  }
+
+  .navbar-nav-links {
+    gap: 16px;
+  }
+
+  .nav-link {
+    font-size: 13px;
+  }
+
+  .navbar-cta-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-nav-links {
+    display: none; /* Collapse links on tiny screens, brand and CTA remain prominent */
+  }
+}
+

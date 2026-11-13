@@ -1,53 +1,99 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './ProjectCardFanOut.css';
 
-// 6 Full-Bleed Editorial Visual Cards (Pure Images, No Text Bloat)
-const ORIGINAL_CARDS = [
+gsap.registerPlugin(ScrollTrigger);
+
+export interface ProjectItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  stacks: string[];
+  images: string[];
+  link: string;
+  // Matrix position: (row, col)
+  matrixPos: string;
+}
+
+const PROJECTS: ProjectItem[] = [
   {
-    id: 1,
-    url: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80',
-    fallback: '/assets/visuals.jpg',
-    alt: 'Editorial Fashion 01',
+    id: 'tailor-voice',
+    title: "Tailor's Voice",
+    subtitle: 'Bespoke Measurement & Client Fitting System',
+    category: 'Full-Stack Architecture',
+    stacks: ['React', 'TypeScript', 'Tailwind'],
+    images: ['/project-screenshot/Tilor-voice.png'],
+    link: 'https://tailor-measurement.vercel.app/',
+    matrixPos: '(1,1) Top-Left',
   },
   {
-    id: 2,
-    url: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=600&q=80',
-    fallback: '/assets/visuals.jpg',
-    alt: 'Bespoke Atelier 02',
+    id: 'queueless',
+    title: 'Queueless Car Wash',
+    subtitle: 'Automated Booking & Live Queue Management',
+    category: 'Web Application',
+    stacks: ['Python', 'Django', 'React'],
+    images: ['/project-screenshot/carwash1.png', '/project-screenshot/carwash123.png'],
+    link: 'https://www.queueless.online/',
+    matrixPos: '(1,2) Top-Center',
   },
   {
-    id: 3,
-    url: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80',
-    fallback: '/assets/Main-character.webp',
-    alt: 'Cinematic Character 03',
+    id: 'bomffa',
+    title: 'Bomffa Store',
+    subtitle: 'Editorial E-Commerce Platform ("Every Bag Tells A Story")',
+    category: 'E-Commerce Storefront',
+    stacks: ['React', 'TypeScript', 'Tailwind'],
+    images: ['/project-screenshot/bomffa1.png', '/project-screenshot/Bomffa2.png'],
+    link: 'http://bomffa.store/',
+    matrixPos: '(1,3) Top-Right',
   },
   {
-    id: 4,
-    url: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80',
-    fallback: '/assets/visuals.jpg',
-    alt: '3D Fluid Motion 04',
+    id: 'goodthings',
+    title: 'Good Things Co.',
+    subtitle: 'Curated Creative Brand Catalog & Shop',
+    category: 'Brand Experience',
+    stacks: ['React', 'Next.js', 'Tailwind'],
+    images: ['/project-screenshot/goodthings1.png'],
+    link: 'https://goodthingsco.vercel.app/',
+    matrixPos: '(2,1) Bottom-Left',
   },
   {
-    id: 5,
-    url: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80',
-    fallback: '/assets/visuals.jpg',
-    alt: 'Creative Suite 05',
+    id: 'birthday',
+    title: 'Solomon70 Celebration',
+    subtitle: 'Interactive Milestone & Wishes Platform',
+    category: 'Motion Web Experience',
+    stacks: ['React', 'GSAP', 'CSS Motion'],
+    images: ['/project-screenshot/birthday12.png', '/project-screenshot/birthday123.png'],
+    link: 'https://solomon70-theta.vercel.app/',
+    matrixPos: '(2,2) Bottom-Center',
   },
   {
-    id: 6,
-    url: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80',
-    fallback: '/assets/visuals.jpg',
-    alt: 'Cyber Architecture 06',
+    id: 'study-track',
+    title: 'Frontend Study Track',
+    subtitle: 'Student Progress Dashboard & Milestone Analytics',
+    category: 'EdTech Platform',
+    stacks: ['React', 'TypeScript', 'Prisma'],
+    images: ['/project-screenshot/Study-track.png'],
+    link: 'https://frontend-study-track.vercel.app/',
+    matrixPos: '(2,3) Bottom-Right',
   },
 ];
 
-// Replicate 4 times for a seamless, gapless 360-degree infinite loop on any screen width
-const LOOPING_CARDS = [
-  ...ORIGINAL_CARDS.map((c, i) => ({ ...c, uniqueId: `set0-${i}` })),
-  ...ORIGINAL_CARDS.map((c, i) => ({ ...c, uniqueId: `set1-${i}` })),
-  ...ORIGINAL_CARDS.map((c, i) => ({ ...c, uniqueId: `set2-${i}` })),
-  ...ORIGINAL_CARDS.map((c, i) => ({ ...c, uniqueId: `set3-${i}` })),
+// Exact Directional Matrix Vectors:
+// (1,1) Top-Left Diagonal
+// (1,2) Top-Center Vertical (from top)
+// (1,3) Top-Right Diagonal
+// (2,1) Bottom-Left Diagonal
+// (2,2) Bottom-Center Vertical (from bottom)
+// (2,3) Bottom-Right Diagonal
+const MATRIX_VECTORS = [
+  { x: -380, y: -280, rot: -8, scale: 0.88 }, // 1,1
+  { x: 0, y: -360, rot: 0, scale: 0.9 },      // 1,2
+  { x: 380, y: -280, rot: 8, scale: 0.88 },   // 1,3
+  { x: -380, y: 280, rot: 8, scale: 0.88 },   // 2,1
+  { x: 0, y: 360, rot: 0, scale: 0.9 },       // 2,2
+  { x: 380, y: 280, rot: -8, scale: 0.88 },   // 2,3
 ];
 
 interface ProjectCardFanOutProps {
@@ -57,10 +103,19 @@ interface ProjectCardFanOutProps {
 export default function ProjectCardFanOut({
   headline = 'Featured Projects & Systems',
 }: ProjectCardFanOutProps) {
-  const sectionRef = useRef<HTMLDivElement | null>(null);
-  const trackRef = useRef<HTMLDivElement | null>(null);
-  const tweenRef = useRef<gsap.core.Tween | null>(null);
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const pinWrapperRef = useRef<HTMLDivElement | null>(null);
+  const gridRef = useRef<HTMLDivElement | null>(null);
+  const cardElementsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  // State to track active screenshot image index for each card
+  const [activeImageIndices, setActiveImageIndices] = useState<{ [key: string]: number }>({
+    'tailor-voice': 0,
+    queueless: 0,
+    bomffa: 0,
+    goodthings: 0,
+    birthday: 0,
+    'study-track': 0,
+  });
 
   // Typewriter Animation State
   const [displayText, setDisplayText] = useState('');
@@ -80,8 +135,8 @@ export default function ProjectCardFanOut({
       }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (pinWrapperRef.current) {
+      observer.observe(pinWrapperRef.current);
     }
 
     return () => observer.disconnect();
@@ -105,147 +160,190 @@ export default function ProjectCardFanOut({
     return () => clearInterval(interval);
   }, [hasStartedTypewriter, headline]);
 
-  // Infinite Seamless Looping Marquee
+  // Matrix Vectors -> 2x3 Grid GSAP Choreography (Natural Fluid Scroll - No Screen Lock)
   useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
+    if (!pinWrapperRef.current || !gridRef.current) return;
 
-    // Calculate width of exactly one set of 6 cards
-    const firstSetCards = track.querySelectorAll('.carousel-card-item');
-    if (firstSetCards.length < ORIGINAL_CARDS.length) return;
+    const ctx = gsap.context(() => {
+      const isMobile = window.innerWidth <= 768;
+      const mult = isMobile ? 0.6 : 1;
 
-    let singleSetWidth = 0;
-    for (let i = 0; i < ORIGINAL_CARDS.length; i++) {
-      const card = firstSetCards[i] as HTMLElement;
-      const style = window.getComputedStyle(card);
-      const marginRight = parseFloat(style.marginRight) || 0;
-      singleSetWidth += card.offsetWidth + marginRight;
-    }
+      // 1. Initial State: Screen starts blank, cards are placed on their matrix vectors with opacity 0
+      cardElementsRef.current.forEach((card, i) => {
+        if (!card) return;
+        const vec = MATRIX_VECTORS[i] || MATRIX_VECTORS[0];
 
-    // Default duration for one complete cycle
-    const duration = 28; // Butter smooth continuous glide
-
-    // Infinite GSAP tween
-    const tween = gsap.to(track, {
-      x: -singleSetWidth,
-      duration: duration,
-      ease: 'none',
-      repeat: -1,
-      modifiers: {
-        x: gsap.utils.unitize((x) => parseFloat(x) % singleSetWidth),
-      },
-    });
-
-    tweenRef.current = tween;
-
-    // Optional: Scroll velocity boost
-    let lastScrollY = window.scrollY;
-    let scrollTimeout: number | undefined;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const delta = Math.abs(currentScrollY - lastScrollY);
-      lastScrollY = currentScrollY;
-
-      // Temporarily speed up during active scroll
-      if (tweenRef.current) {
-        const speedBoost = Math.min(3.5, 1 + delta * 0.04);
-        gsap.to(tweenRef.current, {
-          timeScale: speedBoost,
-          duration: 0.2,
-          overwrite: 'auto',
+        gsap.set(card, {
+          x: vec.x * mult,
+          y: vec.y * mult,
+          rotation: vec.rot * mult,
+          scale: vec.scale,
+          opacity: 0,
+          pointerEvents: 'none',
         });
+      });
 
-        window.clearTimeout(scrollTimeout);
-        scrollTimeout = window.setTimeout(() => {
-          if (tweenRef.current) {
-            gsap.to(tweenRef.current, {
-              timeScale: 1,
-              duration: 0.6,
-              ease: 'power2.out',
-              overwrite: 'auto',
-            });
-          }
-        }, 120);
-      }
-    };
+      // 2. Natural Fluid Scroll: Smoothly converges into 2x3 grid as you scroll without pinning
+      gsap.to(cardElementsRef.current, {
+        scrollTrigger: {
+          trigger: pinWrapperRef.current,
+          start: 'top 82%',
+          end: 'top 28%',
+          scrub: 1.2,
+        },
+        x: 0,
+        y: 0,
+        rotation: 0,
+        scale: 1,
+        opacity: 1,
+        pointerEvents: 'auto',
+        ease: 'power3.out',
+        stagger: 0.04,
+      });
+    }, pinWrapperRef);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      tween.kill();
-      window.removeEventListener('scroll', handleScroll);
-      window.clearTimeout(scrollTimeout);
-    };
+    return () => ctx.revert();
   }, []);
 
-  // Smoothly pause/slow on hover
-  const handleMouseEnter = (id: string) => {
-    setHoveredId(id);
-    if (tweenRef.current) {
-      gsap.to(tweenRef.current, {
-        timeScale: 0.15, // slows down gently rather than hard stopping
-        duration: 0.4,
-        overwrite: 'auto',
-      });
-    }
+  // Cycle image on mini-carousel
+  const handlePrevImage = (e: React.MouseEvent, projectId: string, total: number) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setActiveImageIndices((prev) => ({
+      ...prev,
+      [projectId]: (prev[projectId] - 1 + total) % total,
+    }));
   };
 
-  const handleMouseLeave = () => {
-    setHoveredId(null);
-    if (tweenRef.current) {
-      gsap.to(tweenRef.current, {
-        timeScale: 1,
-        duration: 0.5,
-        ease: 'power2.out',
-        overwrite: 'auto',
-      });
-    }
+  const handleNextImage = (e: React.MouseEvent, projectId: string, total: number) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setActiveImageIndices((prev) => ({
+      ...prev,
+      [projectId]: (prev[projectId] + 1) % total,
+    }));
+  };
+
+  const handleDotClick = (e: React.MouseEvent, projectId: string, index: number) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setActiveImageIndices((prev) => ({
+      ...prev,
+      [projectId]: index,
+    }));
   };
 
   return (
-    <section ref={sectionRef} className="project-carousel-section">
-      {/* 1. Centered Typewriter Headline */}
-      <div className="carousel-typewriter-header">
-        <h2 className="typewriter-heading">
-          <span>{displayText}</span>
-          <span
-            className={`typewriter-cursor ${
-              isTypewriterComplete ? 'blinking' : 'typing'
-            }`}
-          >
-            _
-          </span>
-        </h2>
-      </div>
+    <section ref={pinWrapperRef} className="project-matrix-pin-wrapper">
+      <div className="project-matrix-stage">
+        {/* 1. Centered Typewriter Headline */}
+        <div className="matrix-typewriter-header">
+          <h2 className="typewriter-heading">
+            <span>{displayText}</span>
+            <span
+              className={`typewriter-cursor ${
+                isTypewriterComplete ? 'blinking' : 'typing'
+              }`}
+            >
+              _
+            </span>
+          </h2>
+          <p className="matrix-subtitle">Selected Web Applications & Scalable Client Platforms</p>
+        </div>
 
-      {/* 2. Seamless Infinite Looping Carousel Track */}
-      <div className="carousel-track-container">
-        {/* Soft edge masks for luxury fade-out */}
-        <div className="carousel-fade-edge left" />
-        <div className="carousel-fade-edge right" />
-
-        <div ref={trackRef} className="carousel-track">
-          {LOOPING_CARDS.map((card) => {
-            const isHovered = hoveredId === card.uniqueId;
+        {/* 2. 2x3 Project Grid Stage (Blank initially, then cards fly into their slots) */}
+        <div ref={gridRef} className="project-2x3-matrix-grid">
+          {PROJECTS.map((project, index) => {
+            const currentImgIndex = activeImageIndices[project.id] || 0;
+            const hasMultipleImages = project.images.length > 1;
 
             return (
               <div
-                key={card.uniqueId}
-                className={`carousel-card-item ${isHovered ? 'hovered' : ''}`}
-                onMouseEnter={() => handleMouseEnter(card.uniqueId)}
-                onMouseLeave={handleMouseLeave}
+                key={project.id}
+                ref={(el) => {
+                  cardElementsRef.current[index] = el;
+                }}
+                className="matrix-project-card"
               >
-                <div className="carousel-card-inner">
+                {/* Visual Media with In-Card Mini Carousel */}
+                <div className="card-media-viewport">
+                  {/* Current Active Screenshot */}
                   <img
-                    src={card.url}
-                    alt={card.alt}
-                    className="carousel-card-img"
+                    src={project.images[currentImgIndex]}
+                    alt={`${project.title} screenshot ${currentImgIndex + 1}`}
+                    className="card-media-img"
                     loading="lazy"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = card.fallback;
-                    }}
                   />
+
+                  {/* Multi-Image Hover Carousel Controls */}
+                  {hasMultipleImages && (
+                    <div className="in-card-carousel-controls">
+                      <button
+                        type="button"
+                        className="carousel-arrow prev"
+                        aria-label="Previous screenshot"
+                        onClick={(e) => handlePrevImage(e, project.id, project.images.length)}
+                      >
+                        ‹
+                      </button>
+
+                      {/* Pagination Dots */}
+                      <div className="carousel-dots-pill">
+                        {project.images.map((_, dotIdx) => (
+                          <button
+                            key={dotIdx}
+                            type="button"
+                            className={`carousel-dot ${dotIdx === currentImgIndex ? 'active' : ''}`}
+                            aria-label={`View image ${dotIdx + 1}`}
+                            onClick={(e) => handleDotClick(e, project.id, dotIdx)}
+                          />
+                        ))}
+                      </div>
+
+                      <button
+                        type="button"
+                        className="carousel-arrow next"
+                        aria-label="Next screenshot"
+                        onClick={(e) => handleNextImage(e, project.id, project.images.length)}
+                      >
+                        ›
+                      </button>
+                    </div>
+                  )}
+
+                  {/* Category Chip */}
+                  <span className="card-category-tag">{project.category}</span>
+                </div>
+
+                {/* Card Meta Content: Title, Stacks & Action Link */}
+                <div className="card-meta-content">
+                  <div className="card-header-row">
+                    <h3 className="card-project-title">{project.title}</h3>
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="card-external-link"
+                      title="Open Live Preview"
+                    >
+                      <span>Live</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7" />
+                        <polyline points="7 7 17 7 17 17" />
+                      </svg>
+                    </a>
+                  </div>
+
+                  <p className="card-project-desc">{project.subtitle}</p>
+
+                  {/* Tech Stack Badges */}
+                  <div className="card-tech-badges">
+                    {project.stacks.map((tech) => (
+                      <span key={tech} className="tech-badge-pill">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             );
