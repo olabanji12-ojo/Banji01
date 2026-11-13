@@ -123,19 +123,16 @@ const TechIcons: Record<string, React.ReactNode> = {
       <path d="M8 8l8 8M16 8l-8 8" stroke="#EC4899" strokeWidth="2" strokeLinecap="round" />
     </svg>
   ),
-  AfterEffects: (
+  Codex: (
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
-      <rect width="24" height="24" rx="5" fill="#00005B" stroke="#9999FF" strokeWidth="1.2" />
-      <text
-        x="4.5"
-        y="17"
-        fill="#9999FF"
-        fontFamily="system-ui, sans-serif"
-        fontSize="12"
-        fontWeight="800"
-      >
-        Ae
-      </text>
+      <rect width="24" height="24" rx="5" fill="#18181b" stroke="#38bdf8" strokeWidth="1.2" />
+      <path d="M7 8l4 4-4 4M13 16h4" stroke="#38bdf8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  Antigravity: (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+      <circle cx="12" cy="12" r="10" stroke="#a855f7" strokeWidth="1.2" fill="#18181b" />
+      <path d="M12 6v12M8 10l4-4 4 4" stroke="#a855f7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   ),
   PremierePro: (
@@ -209,8 +206,8 @@ export default function WhatIDoSection() {
   const motionStack = [
     { name: 'Remotion', icon: TechIcons.Remotion },
     { name: 'Hyperframes', icon: TechIcons.Hyperframes },
-    { name: 'After Effects', icon: TechIcons.AfterEffects },
-    { name: 'Premiere Pro', icon: TechIcons.PremierePro },
+    { name: 'Codex', icon: TechIcons.Codex },
+    { name: 'Antigravity', icon: TechIcons.Antigravity },
     { name: 'Three.js', icon: TechIcons.ThreeJS },
     { name: 'AI Video', icon: TechIcons.AIVideo },
   ];

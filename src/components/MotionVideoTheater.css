@@ -1,0 +1,403 @@
+/* NATIVE 9:16 VERTICAL MOTION VIDEO THEATER */
+.motion-theater-section {
+  position: relative;
+  width: 100%;
+  padding: clamp(70px, 10vh, 110px) 24px clamp(80px, 12vh, 130px) 24px;
+  background-color: transparent;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.motion-theater-container {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+.motion-header {
+  text-align: center;
+  max-width: 860px;
+  margin-bottom: clamp(45px, 6.5vh, 65px);
+}
+
+.motion-header-badge {
+  font-family: 'Space Grotesk', system-ui, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #71717a;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.motion-headline {
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  font-size: clamp(28px, 3.8vw, 48px);
+  font-weight: 800;
+  letter-spacing: -1.2px;
+  line-height: 1.25;
+  color: #09090b;
+  margin: 0 0 16px 0;
+}
+
+.headline-word {
+  display: inline-block;
+  margin-right: 0.26em;
+  will-change: transform, opacity;
+}
+
+/* Word-by-Word Animated Subheader */
+.motion-animated-subhead {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: 1.65;
+  color: #52525b;
+  margin: 0;
+}
+
+.subhead-word {
+  display: inline-block;
+  margin-right: 0.28em;
+  will-change: transform, opacity;
+}
+
+/* Native 9:16 2x2 Vertical Reel Grid (2 Columns x 2 Rows) */
+.motion-vertical-reel-grid {
+  width: 100%;
+  max-width: 880px; /* Balanced width for 2 vertical reels per row */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(28px, 3.5vw, 44px);
+}
+
+/* Netflix-Style Vertical Reel Card */
+.vertical-reel-card {
+  position: relative;
+  width: 100%;
+  max-width: 410px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 36px rgba(9, 9, 11, 0.07);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  will-change: transform;
+}
+
+/* Netflix Hover State */
+.vertical-reel-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 28px 60px rgba(9, 9, 11, 0.16);
+  border-color: rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+/* True 9:16 Vertical Video Frame (Zero Cropping) */
+.reel-frame-9-16 {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background-color: #09090b;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+
+.reel-video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.reel-viewport-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(9, 9, 11, 0.45) 0%, transparent 35%, rgba(9, 9, 11, 0.35) 100%);
+  pointer-events: none;
+}
+
+/* Top Bar: Category Pill & Sound Button */
+.reel-top-bar {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 5;
+}
+
+.reel-category-pill {
+  padding: 4px 9px;
+  border-radius: 100px;
+  background: rgba(9, 9, 11, 0.72);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  pointer-events: none;
+}
+
+/* Glassmorphism Sound Toggle Button */
+.reel-sound-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 100px;
+  background: rgba(9, 9, 11, 0.78);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
+  pointer-events: auto;
+}
+
+.reel-sound-toggle-btn:hover {
+  background: #09090b;
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.05);
+}
+
+.reel-sound-toggle-btn.is-active {
+  background: #22c55e;
+  border-color: #22c55e;
+  color: #09090b;
+  font-weight: 700;
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.45);
+}
+
+/* Animated Equalizer Wave Bars */
+.sound-wave-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 10px;
+}
+
+.sound-wave-bars .bar {
+  width: 2px;
+  background-color: currentColor;
+  border-radius: 2px;
+  animation: soundWave 0.8s infinite ease-in-out alternate;
+}
+
+.bar-1 { height: 5px; animation-delay: 0.1s; }
+.bar-2 { height: 10px; animation-delay: 0.3s; }
+.bar-3 { height: 7px; animation-delay: 0.2s; }
+
+@keyframes soundWave {
+  0% { transform: scaleY(0.4); }
+  100% { transform: scaleY(1); }
+}
+
+/* Expand Hint on Hover */
+.reel-expand-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: rgba(9, 9, 11, 0.75);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.vertical-reel-card:hover .reel-expand-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card Meta Content - Clean Left Aligned */
+.reel-card-meta {
+  padding: 16px 18px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  flex: 1;
+  background: #ffffff;
+}
+
+.reel-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 16.5px;
+  font-weight: 700;
+  color: #09090b;
+  letter-spacing: -0.3px;
+  margin: 0 0 6px 0;
+  text-align: left;
+}
+
+.reel-desc {
+  width: 100%;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: #71717a;
+  margin: 0 0 12px 0;
+  text-align: left;
+  flex: 1;
+}
+
+/* Motion Tool Badges */
+.reel-tools-row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: auto;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.reel-tool-badge {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #3f3f46;
+  background: #f4f4f5;
+  padding: 3px 7px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  letter-spacing: 0.2px;
+}
+
+/* Cinema Modal */
+.cinema-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(14px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeInModal 0.25s ease-out;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.cinema-modal-box.vertical-box {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  max-height: 90vh;
+  background: #0d0d10;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+}
+
+.cinema-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 14px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.cinema-close-btn:hover {
+  background: #ffffff;
+  color: #09090b;
+  transform: scale(1.1);
+}
+
+.cinema-vertical-frame {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  max-height: 70vh;
+  background: #000;
+  overflow: hidden;
+}
+
+.cinema-vertical-player {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.cinema-info-row {
+  padding: 16px 20px;
+  background: #111116;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.cinema-title {
+  color: #ffffff;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 16px;
+  margin: 0 0 4px 0;
+  text-align: left;
+}
+
+.cinema-desc {
+  color: #a1a1aa;
+  font-size: 12px;
+  margin: 0;
+  text-align: left;
+}
+
+.cinema-tools-row {
+  display: flex;
+  gap: 5px;
+}
+
+/* Responsive Grid Breakpoints */
+@media (max-width: 768px) {
+  .motion-vertical-reel-grid {
+    grid-template-columns: 1fr;
+    max-width: 380px;
+    margin: 0 auto;
+    gap: 28px;
+  }
+}

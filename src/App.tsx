@@ -3,6 +3,8 @@ import Navbar from './components/Navbar';
 import StaggeredReelPortfolio from './components/StaggeredReelPortfolio';
 import WhatIDoSection from './components/WhatIDoSection';
 import ProjectCardFanOut from './components/ProjectCardFanOut';
+import MotionVideoTheater from './components/MotionVideoTheater';
+import AboutMeSection from './components/AboutMeSection';
 
 export default function App() {
   return (
@@ -16,6 +18,12 @@ export default function App() {
       </div>
       <div id="projects">
         <ProjectCardFanOut />
+      </div>
+      <div id="motion-videos">
+        <MotionVideoTheater />
+      </div>
+      <div id="about">
+        <AboutMeSection />
       </div>
     </div>
   );

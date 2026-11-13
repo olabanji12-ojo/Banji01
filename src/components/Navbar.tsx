@@ -46,6 +46,20 @@ export default function Navbar() {
             Projects
           </a>
           <a
+            href="#motion-videos"
+            className="nav-link"
+            onClick={(e) => scrollToSection(e, 'motion-videos')}
+          >
+            Videos
+          </a>
+          <a
+            href="#about"
+            className="nav-link"
+            onClick={(e) => scrollToSection(e, 'about')}
+          >
+            About
+          </a>
+          <a
             href="mailto:emmanuelojo291@gmail.com"
             className="nav-link"
           >

@@ -1,0 +1,323 @@
+/* ABOUT ME SECTION (PHOTO LEFT, STORY & WORK EXPERIENCE RIGHT) */
+.about-me-section {
+  position: relative;
+  width: 100%;
+  padding: clamp(70px, 10vh, 120px) 24px clamp(80px, 12vh, 130px) 24px;
+  background-color: transparent;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.about-me-container {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  gap: clamp(40px, 5vw, 70px);
+  align-items: flex-start;
+}
+
+/* LEFT COLUMN: Banji's Real Portrait Card */
+.about-left-col {
+  position: sticky;
+  top: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-image-card {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 16px 45px rgba(9, 9, 11, 0.08);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-image-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #09090b;
+}
+
+.about-profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  filter: grayscale(100%) contrast(105%);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.about-image-card:hover .about-profile-img {
+  filter: grayscale(0%) contrast(102%);
+  transform: scale(1.02);
+}
+
+.about-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(9, 9, 11, 0.4) 100%);
+  pointer-events: none;
+}
+
+/* Credential Badge */
+.about-image-badge {
+  padding: 16px 8px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.about-badge-role {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #09090b;
+  letter-spacing: -0.3px;
+  margin-bottom: 2px;
+}
+
+.about-badge-sub {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  color: #71717a;
+  font-weight: 500;
+}
+
+/* Fun Facts */
+.about-fun-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.fun-fact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f4f4f5;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #27272a;
+}
+
+/* RIGHT COLUMN: The Story & Experience */
+.about-right-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.about-header-meta {
+  margin-bottom: 24px;
+}
+
+.about-section-badge {
+  font-family: 'Space Grotesk', system-ui, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #71717a;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.about-headline {
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -1.2px;
+  line-height: 1.2;
+  color: #09090b;
+  margin: 0;
+}
+
+/* Story Text Flow - Word by Word */
+.about-story-text-flow {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.story-paragraph {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: clamp(15px, 1.25vw, 17.5px);
+  line-height: 1.7;
+  color: #3f3f46;
+  margin: 0 0 20px 0;
+}
+
+.about-word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Work Experience Section */
+.about-experience-section {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.experience-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #09090b;
+  letter-spacing: -0.4px;
+  margin: 0 0 16px 0;
+}
+
+.experience-cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.experience-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(9, 9, 11, 0.04);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(9, 9, 11, 0.08);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.experience-card.current {
+  border-left: 4px solid #09090b;
+}
+
+.exp-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.exp-company-name {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #09090b;
+  margin: 0 0 2px 0;
+}
+
+.exp-role {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  color: #71717a;
+  font-weight: 500;
+}
+
+.exp-badge {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 100px;
+  background: #f4f4f5;
+  color: #71717a;
+}
+
+.exp-badge.current {
+  background: #09090b;
+  color: #ffffff;
+}
+
+.exp-description {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #52525b;
+  margin: 0 0 12px 0;
+}
+
+.exp-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.exp-tool-pill {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #3f3f46;
+  background: #f4f4f5;
+  padding: 2.5px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Tutor Note */
+.about-tutor-note {
+  width: 100%;
+  background: #fafafa;
+  border: 1px dashed rgba(0, 0, 0, 0.14);
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.tutor-icon {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.tutor-text {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #52525b;
+  margin: 0;
+}
+
+.tutor-text strong {
+  color: #09090b;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .about-me-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-left-col {
+    position: static;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+}
+
