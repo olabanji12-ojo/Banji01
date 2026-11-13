@@ -25,6 +25,7 @@ export default function Navbar() {
       <nav className="portfolio-navbar">
         {/* Brand / Logo on the left */}
         <a href="#hero" className="navbar-brand" onClick={(e) => scrollToSection(e, 'hero')}>
+          <img src="/bj-logo.svg" alt="BJ Logo" className="navbar-bj-logo" />
           <span className="brand-dot" />
           <span className="brand-name">OLABANJI OJO</span>
         </a>

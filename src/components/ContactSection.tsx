@@ -5,12 +5,70 @@ export default function ContactSection() {
   const [copied, setCopied] = useState(false);
   const email = 'emmanuelojo291@gmail.com';
 
+  // Form State
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: 'Full-Stack Software Architecture',
+    message: '',
+  });
+
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
   const handleCopyEmail = (e: React.MouseEvent) => {
     e.preventDefault();
     navigator.clipboard.writeText(email).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
     });
+  };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setFormStatus('error');
+      setErrorMessage('Please fill in your name, email, and message.');
+      return;
+    }
+
+    setFormStatus('sending');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setFormStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          subject: 'Full-Stack Software Architecture',
+          message: '',
+        });
+      } else {
+        setFormStatus('error');
+        setErrorMessage(result.error || 'Failed to send message. Please try again or email directly.');
+      }
+    } catch (err: any) {
+      setFormStatus('error');
+      setErrorMessage(err.message || 'Network error while delivering message. Please email directly.');
+    }
   };
 
   const scrollToTop = () => {
@@ -33,25 +91,18 @@ export default function ContactSection() {
           </p>
         </div>
 
-        {/* Main Contact Card */}
+        {/* Main Interactive Contact Container */}
         <div className="contact-card">
           <div className="contact-card-inner">
-            <span className="contact-card-label">GET IN TOUCH DIRECTLY</span>
-            <a href={`mailto:${email}`} className="contact-email-link">
-              {email}
-            </a>
-
-            <div className="contact-action-row">
-              <a
-                href={`mailto:${email}`}
-                className="contact-primary-btn"
-              >
-                <span>Send Message</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="7 7 17 7 17 17" />
-                </svg>
-              </a>
+            
+            {/* Quick Email Banner */}
+            <div className="contact-quick-bar">
+              <div>
+                <span className="contact-card-label">DIRECT INBOX</span>
+                <a href={`mailto:${email}`} className="contact-email-link">
+                  {email}
+                </a>
+              </div>
 
               <button
                 type="button"
@@ -77,6 +128,137 @@ export default function ContactSection() {
                 )}
               </button>
             </div>
+
+            {/* In-Page Interactive Contact Form via Resend */}
+            <div className="contact-form-wrapper">
+              <div className="form-heading-row">
+                <h3 className="form-title">Send a Direct Message</h3>
+                <span className="form-subtitle">Delivers straight to Banji's personal inbox via Resend</span>
+              </div>
+
+              {formStatus === 'success' ? (
+                <div className="form-success-banner">
+                  <div className="success-icon-wrap">✓</div>
+                  <h4 className="success-title">Message Delivered Successfully!</h4>
+                  <p className="success-desc">
+                    Thank you for reaching out. Your message has landed in my inbox, and I will get back to you within 24 hours.
+                  </p>
+                  <button
+                    type="button"
+                    className="send-another-btn"
+                    onClick={() => setFormStatus('idle')}
+                  >
+                    Send Another Message
+                  </button>
+                </div>
+              ) : (
+                <form className="contact-form-element" onSubmit={handleSubmit}>
+                  <div className="form-grid-row">
+                    <div className="form-field-group">
+                      <label htmlFor="name" className="form-label">
+                        Your Name <span className="req-star">*</span>
+                      </label>
+                      <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        placeholder="e.g. Alex Johnson"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        className="form-input"
+                        disabled={formStatus === 'sending'}
+                      />
+                    </div>
+
+                    <div className="form-field-group">
+                      <label htmlFor="email" className="form-label">
+                        Your Email <span className="req-star">*</span>
+                      </label>
+                      <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        placeholder="alex@company.com"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="form-input"
+                        disabled={formStatus === 'sending'}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field-group">
+                    <label htmlFor="subject" className="form-label">
+                      Project Scope / Inquiry Type
+                    </label>
+                    <select
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      className="form-select"
+                      disabled={formStatus === 'sending'}
+                    >
+                      <option value="Full-Stack Software Architecture">Full-Stack Software Architecture (Go / React)</option>
+                      <option value="Remotion & Programmatic Motion Videos">Remotion &amp; Programmatic Motion Videos</option>
+                      <option value="Web Application & Cloud Services">Web Application &amp; Cloud Platform</option>
+                      <option value="Consulting or Full-Time Engineering">Engineering Role / Contract Opportunity</option>
+                      <option value="General Hello">General Inquiry / Coffee Chat</option>
+                    </select>
+                  </div>
+
+                  <div className="form-field-group">
+                    <label htmlFor="message" className="form-label">
+                      Message <span className="req-star">*</span>
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={4}
+                      placeholder="Tell me about your project, timeline, or idea..."
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      className="form-textarea"
+                      disabled={formStatus === 'sending'}
+                    />
+                  </div>
+
+                  {formStatus === 'error' && (
+                    <div className="form-error-banner">
+                      <span>⚠️ {errorMessage}</span>
+                    </div>
+                  )}
+
+                  <div className="form-action-row">
+                    <button
+                      type="submit"
+                      disabled={formStatus === 'sending'}
+                      className={`form-submit-btn ${formStatus === 'sending' ? 'is-loading' : ''}`}
+                    >
+                      {formStatus === 'sending' ? (
+                        <>
+                          <span className="submit-spinner" />
+                          <span>Delivering to Inbox...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Send Message to Banji</span>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7" />
+                            <polyline points="7 7 17 7 17 17" />
+                          </svg>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </form>
+              )}
+
+            </div>
+
           </div>
         </div>
 

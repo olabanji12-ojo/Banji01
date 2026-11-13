@@ -201,7 +201,7 @@ export default function MotionVideoTheater() {
                 }}
                 className="headline-word"
               >
-                {word}
+                {word}&nbsp;
               </span>
             ))}
           </h2>
@@ -216,7 +216,7 @@ export default function MotionVideoTheater() {
                 }}
                 className="subhead-word"
               >
-                {word}
+                {word}&nbsp;
               </span>
             ))}
           </p>

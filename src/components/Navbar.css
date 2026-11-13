@@ -55,6 +55,15 @@
   opacity: 0.85;
 }
 
+.navbar-bj-logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  display: block;
+  object-fit: contain;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
 /* Pulsing Green Status Dot ("Available for work") */
 .brand-dot {
   width: 8px;

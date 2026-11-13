@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18181b" />
+      <stop offset="100%" stop-color="#09090b" />
+    </linearGradient>
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35" />
+      <stop offset="50%" stop-color="#71717a" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.25" />
+    </linearGradient>
+    <linearGradient id="bjGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="70%" stop-color="#f4f4f5" />
+      <stop offset="100%" stop-color="#d4d4d8" />
+    </linearGradient>
+    <linearGradient id="dotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22c55e" />
+      <stop offset="100%" stop-color="#15803d" />
+    </linearGradient>
+  </defs>
+  <rect x="16" y="16" width="480" height="480" rx="120" fill="url(#bgGrad)" stroke="url(#ringGrad)" stroke-width="12" />
+  <g fill="url(#bjGrad)" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" letter-spacing="-8">
+    <path d="M 120 136 H 240 C 275 136 298 155 298 188 C 298 212 284 230 262 238 C 290 248 306 270 306 300 C 306 338 276 360 236 360 H 120 Z M 172 180 V 224 H 230 C 248 224 258 214 258 202 C 258 190 248 180 230 180 Z M 172 268 V 316 H 236 C 255 316 266 305 266 292 C 266 278 255 268 236 268 Z" />
+    <path d="M 326 136 H 378 V 304 C 378 344 350 366 306 366 C 285 366 268 360 256 352 L 270 316 C 278 322 289 326 302 326 C 322 326 334 296 V 136 H 326 Z" />
+  </g>
+  <circle cx="396" cy="116" r="22" fill="url(#dotGrad)" stroke="#09090b" stroke-width="6" />
+</svg>
+

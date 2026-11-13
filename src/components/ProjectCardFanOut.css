@@ -320,3 +320,299 @@
     padding: 16px;
   }
 }
+
+/* Card Case Study Hover Hint */
+.card-case-study-hint {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  background: rgba(9, 9, 11, 0.88);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  z-index: 6;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.matrix-project-card:hover .card-case-study-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================
+   CASE STUDY ARCHITECTURE MODAL (DETAILED POPUP)
+   ========================================================== */
+.case-study-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(9, 9, 11, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 3vw, 32px);
+  animation: modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.case-study-modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  animation: modalScaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d8 transparent;
+}
+
+.case-study-modal-box::-webkit-scrollbar {
+  width: 6px;
+}
+.case-study-modal-box::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 10px;
+}
+
+@keyframes modalScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Close Button */
+.case-study-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(9, 9, 11, 0.85);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 20;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.case-study-close-btn:hover {
+  background: #09090b;
+  transform: scale(1.1) rotate(90deg);
+}
+
+/* Media Stage */
+.case-study-media-stage {
+  position: relative;
+  width: 100%;
+  height: clamp(260px, 36vw, 420px);
+  background: #09090b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 24px 24px 0 0;
+}
+
+.case-study-modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #09090b;
+}
+
+/* Image Switcher (When multiple screenshots exist) */
+.modal-image-switcher {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  background: rgba(9, 9, 11, 0.75);
+  backdrop-filter: blur(8px);
+  padding: 5px 8px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 10;
+}
+
+.modal-switcher-btn {
+  background: transparent;
+  color: #a1a1aa;
+  border: none;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-switcher-btn.active {
+  background: #ffffff;
+  color: #09090b;
+}
+
+.modal-switcher-btn:hover:not(.active) {
+  color: #ffffff;
+}
+
+/* Modal Body Content */
+.case-study-body {
+  padding: clamp(24px, 4vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: left;
+}
+
+.modal-header-line {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #f4f4f5;
+  flex-wrap: wrap;
+}
+
+.modal-category-chip {
+  font-family: 'Space Grotesk', system-ui, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #71717a;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.modal-project-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 800;
+  color: #09090b;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+
+.modal-live-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 100px;
+  background: #09090b;
+  color: #ffffff;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(9, 9, 11, 0.2);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.modal-live-btn:hover {
+  background: #27272a;
+  transform: translateY(-2px);
+}
+
+/* Section Blocks */
+.modal-section-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-section-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #a1a1aa;
+  margin: 0;
+}
+
+.modal-overview-text {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #27272a;
+  margin: 0;
+}
+
+.modal-highlights-list {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-highlights-list li {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #3f3f46;
+}
+
+/* Tech Stacks in Modal */
+.modal-tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modal-tech-pill {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #09090b;
+  background: #f4f4f5;
+  border: 1px solid #e4e4e7;
+  padding: 6px 12px;
+  border-radius: 8px;
+  letter-spacing: 0.2px;
+}

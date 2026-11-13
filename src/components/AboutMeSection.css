@@ -170,6 +170,7 @@
 
 .about-word {
   display: inline-block;
+  margin-right: 0.28em;
   will-change: transform, opacity;
 }
 

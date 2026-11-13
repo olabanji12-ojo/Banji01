@@ -57,11 +57,11 @@
 /* Main Contact Card (Obsidian Black) */
 .contact-card {
   width: 100%;
-  max-width: 760px;
+  max-width: 820px;
   background: #09090b;
-  border-radius: 26px;
-  padding: clamp(32px, 5vw, 50px) clamp(24px, 4vw, 44px);
-  box-shadow: 0 24px 60px rgba(9, 9, 11, 0.22);
+  border-radius: 28px;
+  padding: clamp(32px, 5vw, 48px);
+  box-shadow: 0 28px 70px rgba(9, 9, 11, 0.28);
   margin-bottom: 36px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   position: relative;
@@ -81,8 +81,20 @@
 .contact-card-inner {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* Quick Bar at the Top of Card */
+.contact-quick-bar {
+  display: flex;
   align-items: center;
-  text-align: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-bottom: 24px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .contact-card-label {
@@ -91,54 +103,23 @@
   font-weight: 700;
   letter-spacing: 1.8px;
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 12px;
+  display: block;
+  margin-bottom: 4px;
 }
 
 .contact-email-link {
   font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: clamp(20px, 3.2vw, 36px);
+  font-size: clamp(18px, 2.4vw, 26px);
   font-weight: 800;
-  letter-spacing: -0.8px;
+  letter-spacing: -0.6px;
   color: #ffffff;
   text-decoration: none;
-  margin-bottom: 28px;
   transition: opacity 0.2s, transform 0.2s;
-  word-break: break-all;
+  display: inline-block;
 }
 
 .contact-email-link:hover {
   opacity: 0.85;
-  transform: scale(1.01);
-}
-
-/* Action Buttons Row */
-.contact-action-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.contact-primary-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #ffffff;
-  color: #09090b;
-  font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 12px 24px;
-  border-radius: 100px;
-  text-decoration: none;
-  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
-}
-
-.contact-primary-btn:hover {
-  background: #ededef;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25);
 }
 
 .contact-copy-btn {
@@ -148,9 +129,9 @@
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
   font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 600;
-  padding: 12px 22px;
+  padding: 10px 18px;
   border-radius: 100px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   cursor: pointer;
@@ -168,6 +149,254 @@
   border-color: #22c55e;
   color: #09090b;
   font-weight: 700;
+}
+
+/* In-Page Interactive Contact Form */
+.contact-form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-heading-row {
+  margin-bottom: 22px;
+}
+
+.form-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.4px;
+  margin: 0 0 4px 0;
+}
+
+.form-subtitle {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  color: #a1a1aa;
+}
+
+.contact-form-element {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.form-grid-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .form-grid-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.form-label {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: #d4d4d8;
+}
+
+.req-star {
+  color: #f43f5e;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #71717a;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.form-select option {
+  background: #18181b;
+  color: #ffffff;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Action & Submit Button */
+.form-action-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.form-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #ffffff;
+  color: #09090b;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+
+.form-submit-btn:hover:not(:disabled) {
+  background: #f4f4f5;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.22);
+}
+
+.form-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.form-submit-btn.is-loading {
+  background: #e4e4e7;
+}
+
+.submit-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(9, 9, 11, 0.25);
+  border-top-color: #09090b;
+  border-radius: 50%;
+  animation: submitSpin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes submitSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Success Banner */
+.form-success-banner {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  border-radius: 18px;
+  padding: 32px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: bannerFadeIn 0.3s ease forwards;
+}
+
+@keyframes bannerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.success-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #22c55e;
+  color: #09090b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.success-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+}
+
+.success-desc {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: #d4d4d8;
+  max-width: 480px;
+  margin: 0 0 20px 0;
+}
+
+.send-another-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 20px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.send-another-btn:hover {
+  background: #ffffff;
+  color: #09090b;
+}
+
+/* Error Banner */
+.form-error-banner {
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #fca5a5;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 /* Channels & Status Grid */

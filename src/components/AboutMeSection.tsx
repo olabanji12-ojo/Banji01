@@ -6,8 +6,8 @@ import './AboutMeSection.css';
 gsap.registerPlugin(ScrollTrigger);
 
 const STORY_PARAGRAPHS = [
-  "I'm Banji — to be honest, I'm really glad you made it here.",
-  "I've been programming since 2023. Starting out with just my laptop, YouTube, documentation, and deep curiosity, I taught myself software engineering from the ground up—architecting scalable REST APIs, database schemas, and robust backend systems.",
+  "I'm Banji, to be honest, I'm really glad you made it here.",
+  "I've been programming since 2023. Starting out with just my laptop, YouTube, documentation, and deep curiosity, I taught myself software engineering from the ground up, architecting scalable REST APIs, database schemas, and robust backend systems.",
   "Earlier this year, I stumbled upon programmatic video creation and asked: 'What is Remotion? Can code really direct videos like this?' I started experimenting, fell in love with code-driven motion, and leveled up with Remotion, Hyperframes, Codex, and Antigravity to build automated video pipelines.",
 ];
 
@@ -107,7 +107,7 @@ export default function AboutMeSection() {
                     }}
                     className="about-word"
                   >
-                    {word}{' '}
+                    {word}&nbsp;
                   </span>
                 ))}
               </p>
