@@ -60,8 +60,9 @@ export default function Navbar() {
             About
           </a>
           <a
-            href="mailto:emmanuelojo291@gmail.com"
+            href="#contact"
             className="nav-link"
+            onClick={(e) => scrollToSection(e, 'contact')}
           >
             Contact
           </a>
@@ -70,8 +71,9 @@ export default function Navbar() {
         {/* CTA Button on the right */}
         <div className="navbar-actions">
           <a
-            href="mailto:emmanuelojo291@gmail.com"
+            href="#contact"
             className="navbar-cta-btn"
+            onClick={(e) => scrollToSection(e, 'contact')}
           >
             <span>Let's Talk</span>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

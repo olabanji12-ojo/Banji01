@@ -5,6 +5,7 @@ import WhatIDoSection from './components/WhatIDoSection';
 import ProjectCardFanOut from './components/ProjectCardFanOut';
 import MotionVideoTheater from './components/MotionVideoTheater';
 import AboutMeSection from './components/AboutMeSection';
+import ContactSection from './components/ContactSection';
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
       <div id="about">
         <AboutMeSection />
       </div>
+      <ContactSection />
     </div>
   );
 }
