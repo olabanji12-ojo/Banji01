@@ -65,6 +65,8 @@ export default function MotionVideoTheater() {
 
   // Fullscreen Cinema Modal
   const [activeModalVideo, setActiveModalVideo] = useState<VideoItem | null>(null);
+  const [modalStartTime, setModalStartTime] = useState<number>(0);
+  const modalVideoRef = useRef<HTMLVideoElement | null>(null);
 
   const headlineWords = HEADLINE_TEXT.split(' ');
   const subheaderWords = SUBHEADER_TEXT.split(' ');
@@ -176,12 +178,35 @@ export default function MotionVideoTheater() {
   };
 
   const openModal = (video: VideoItem) => {
+    // 1. Get exact current playback position from card video
+    const cardVid = videoRefs.current[video.id];
+    const initialTime = cardVid ? cardVid.currentTime : 0;
+    setModalStartTime(initialTime);
+
+    // 2. Pause all background reel videos to free up 100% decoder capacity
+    Object.values(videoRefs.current).forEach((v) => {
+      if (v) v.pause();
+    });
+
     setActiveModalVideo(video);
   };
 
   const closeModal = () => {
     setActiveModalVideo(null);
+
+    // Resume background card videos
+    Object.values(videoRefs.current).forEach((v) => {
+      if (v) v.play().catch(() => {});
+    });
   };
+
+  // Sync modal video playback position seamlessly
+  useEffect(() => {
+    if (activeModalVideo && modalVideoRef.current) {
+      modalVideoRef.current.currentTime = modalStartTime;
+      modalVideoRef.current.play().catch(() => {});
+    }
+  }, [activeModalVideo, modalStartTime]);
 
   return (
     <section ref={sectionRef} id="motion-videos" className="motion-theater-section">
@@ -331,9 +356,12 @@ export default function MotionVideoTheater() {
             </button>
             <div className="cinema-vertical-frame">
               <video
+                ref={modalVideoRef}
                 src={activeModalVideo.videoSrc}
                 controls
                 autoPlay
+                playsInline
+                preload="auto"
                 className="cinema-vertical-player"
               />
             </div>
