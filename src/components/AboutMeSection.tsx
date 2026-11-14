@@ -79,7 +79,7 @@ export default function AboutMeSection() {
             {/* Fun Fact Badges Under Photo */}
             <div className="about-fun-facts">
               <span className="fun-fact-chip">
-                <span>🎸</span> Acoustic &amp; Electric Guitarist
+                <span>🎸</span> Acoustic Guitar (Still Learning)
               </span>
               <span className="fun-fact-chip">
                 <span>📐</span> Mathematics &amp; Physics Tutor
