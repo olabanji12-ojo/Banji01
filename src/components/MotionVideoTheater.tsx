@@ -244,7 +244,7 @@ export default function MotionVideoTheater() {
                     muted={!isUnmuted}
                     playsInline
                     autoPlay
-                    preload="metadata"
+                    preload="auto"
                     className="reel-video-element"
                   />
 
