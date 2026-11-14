@@ -292,7 +292,7 @@ export default function WhatIDoSection() {
             <div className="card-body">
               <h3 className="card-title">Video & Motion Designer</h3>
               <p className="card-desc">
-                Directing automated video pipelines, kinetic 3D typography, and viral motion graphics.
+                Creating code-driven product videos, UI animations, and motion reels with Remotion and Hyperframes.
               </p>
             </div>
 

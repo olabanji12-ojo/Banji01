@@ -18,33 +18,33 @@ const MOTION_VIDEOS: VideoItem[] = [
   {
     id: 'tailor-voice',
     title: "Tailor's Voice Walkthrough",
-    subtitle: 'End-to-end bespoke tailoring measurement workflow and kinetic product tour.',
-    category: 'Product Story',
-    tools: ['Remotion', 'Codex', 'Figma'],
+    subtitle: 'Step-by-step product walkthrough showing hands-free voice measurement in action.',
+    category: 'Product Walkthrough',
+    tools: ['Remotion', 'Codex'],
     videoSrc: '/videos/tailor-voice.mp4',
   },
   {
     id: 'product-reel',
     title: 'Commercial Product Reel',
-    subtitle: 'High-energy 3D commercial motion, typography pacing & fluid product reveal.',
+    subtitle: 'Fast-paced product reveal with smooth cuts, synchronized sound, and typography.',
     category: 'Commercial Reel',
-    tools: ['Hyperframes', 'Premiere Pro', 'Antigravity'],
+    tools: ['Hyperframes', 'Antigravity'],
     videoSrc: '/videos/product-reel.mp4',
   },
   {
     id: 'app-showcase',
     title: 'App Interaction Demo',
-    subtitle: 'Interactive mobile interface physics, gesture feedback & UI storytelling.',
+    subtitle: 'Showing mobile interface gestures, card physics, and user flow animations.',
     category: 'App Showcase',
-    tools: ['Remotion', 'TypeScript', 'Antigravity'],
+    tools: ['Remotion', 'Hyperframes'],
     videoSrc: '/videos/app-showcase.mp4',
   },
   {
     id: 'antigravity-2026',
     title: 'Antigravity 2026 Exploration',
-    subtitle: 'Experimental AI-driven video synthesis pipeline and cinematic 3D lighting.',
-    category: '3D & AI Video',
-    tools: ['AI Video', 'Three.js', 'Codex'],
+    subtitle: 'Creative motion experiment exploring 3D lighting, flow, and camera transitions.',
+    category: 'Motion Experiment',
+    tools: ['Antigravity', 'Codex'],
     videoSrc: '/videos/antigravity-2026.mp4',
   },
 ];
@@ -52,7 +52,7 @@ const MOTION_VIDEOS: VideoItem[] = [
 const HEADLINE_TEXT = 'Automated Video Pipelines & Motion Direction';
 
 const SUBHEADER_TEXT =
-  'High-impact product videos, kinetic app demos, and programmatic motion directed with Remotion, Hyperframes, Codex & Antigravity.';
+  'Product walkthroughs, app interaction demos, and motion reels built with Remotion, Hyperframes, Codex & Antigravity.';
 
 export default function MotionVideoTheater() {
   const sectionRef = useRef<HTMLElement | null>(null);

@@ -7,8 +7,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const STORY_PARAGRAPHS = [
   "I'm Banji, to be honest, I'm really glad you made it here.",
-  "I've been programming since 2023. Starting out with just my laptop, YouTube, documentation, and deep curiosity, I taught myself software engineering from the ground up, architecting scalable REST APIs, database schemas, and robust backend systems.",
-  "Earlier this year, I stumbled upon programmatic video creation and asked: 'What is Remotion? Can code really direct videos like this?' I started experimenting, fell in love with code-driven motion, and leveled up with Remotion, Hyperframes, Codex, and Antigravity to build automated video pipelines.",
+  "I've been programming since 2023. Starting out with just my laptop, YouTube videos, and documentation, I taught myself software engineering from scratch—building clean backend APIs, databases, and modern web apps.",
+  "Earlier this year, I stumbled into programmatic video and asked: 'What is Remotion? Can code really make videos like this?' I tested it out, fell in love with code-driven motion, and started creating animated product demos and reels with Remotion, Hyperframes, Codex, and Antigravity.",
 ];
 
 export default function AboutMeSection() {
@@ -129,7 +129,7 @@ export default function AboutMeSection() {
                   <span className="exp-badge current">Current</span>
                 </div>
                 <p className="exp-description">
-                  Direct automated video pipelines, programmatic product reels, and interactive web features across their digital platform.
+                  Create product videos, motion reels, and interactive features on their website.
                 </p>
                 <div className="exp-tools">
                   <span className="exp-tool-pill">Remotion</span>
@@ -149,7 +149,7 @@ export default function AboutMeSection() {
                   <span className="exp-badge">Past Experience</span>
                 </div>
                 <p className="exp-description">
-                  Engineered high-performance REST APIs, database schemas, and robust server-side business logic for client systems.
+                  Worked mainly on the backend, building clean REST APIs and database logic for client systems.
                 </p>
                 <div className="exp-tools">
                   <span className="exp-tool-pill">Go</span>
@@ -165,7 +165,7 @@ export default function AboutMeSection() {
           <div className="about-tutor-note">
             <span className="tutor-icon">💡</span>
             <p className="tutor-text">
-              <strong>Need a tutor?</strong> If you ever need someone to break down complex backend algorithms, calculus, or physics—I’m always up for teaching.
+              <strong>Fun fact:</strong> If you ever need a tutor for mathematics or physics, I've got you covered.
             </p>
           </div>
 
