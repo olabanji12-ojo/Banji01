@@ -76,6 +76,23 @@ export default function AboutMeSection() {
               <span className="about-badge-sub">B.Sc. Computer Science • Class of 2026</span>
             </div>
 
+            {/* Formal CV Download Button */}
+            <a
+              href="/Olabanji_Ojo_CV.pdf"
+              download="Olabanji_Ojo_Software_Engineer_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="about-cv-download-btn"
+              title="Download Olabanji Ojo's CV (PDF)"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              <span>Download CV / Resume</span>
+            </a>
+
             {/* Fun Fact Badges Under Photo */}
             <div className="about-fun-facts">
               <span className="fun-fact-chip">

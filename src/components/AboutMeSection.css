@@ -96,6 +96,44 @@
   font-weight: 500;
 }
 
+/* Formal CV Download Button */
+.about-cv-download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px 18px;
+  background: #09090b;
+  color: #ffffff;
+  border-radius: 12px;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(9, 9, 11, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.about-cv-download-btn:hover {
+  background: #27272a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(9, 9, 11, 0.28);
+}
+
+.about-cv-download-btn svg {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.about-cv-download-btn:hover svg {
+  transform: translateY(2px);
+}
+
 /* Fun Facts */
 .about-fun-facts {
   display: flex;
